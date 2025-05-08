@@ -1,3 +1,4 @@
+package medias_lista1;
 import java.util.Scanner;
 
 public class media2 {
