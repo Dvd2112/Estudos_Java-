@@ -1,3 +1,4 @@
+package Diferentes;
 public class Programa2 {
     public static void main (String[] args){
         String nome = "fulano";

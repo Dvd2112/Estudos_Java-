@@ -1,3 +1,4 @@
+package Diferentes;
 public class ProgramaT {
     
     public static void main(String[] args) {

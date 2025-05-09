@@ -1,3 +1,4 @@
+package Diferentes;
 public class Telefone {
     private char estado;
     private int ddd;
