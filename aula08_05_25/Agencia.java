@@ -1,31 +1,27 @@
 package aula08_05_25;
 
 public class Agencia {
-    private int numero;
-    private String nome;
+    private String numero;
+    private String endereco;
 
-    public String getNome(){
-        return this.nome;
-    }
-    public int getNumero(){
-        return this.numero;
-    }
-    public Agencia(){
-        numero = 0 ;
-        nome = "-";
+    public Agencia(String numero, String endereco) {
+        this.numero = numero;
+        this.endereco = endereco;
     }
 
-    public Agencia(String nome){
-        this.nome = nome;
-    }
-
-    public Agencia(int numero /*variavel local */){
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
-    public Agencia(String nome, int numero){
-        this.numero = numero;
-        this.nome = nome;
+    public String getNumero() {
+        return numero;
+    }
 
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getEndereco() {
+        return endereco;
     }
 }
