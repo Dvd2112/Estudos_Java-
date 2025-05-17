@@ -10,6 +10,7 @@ public class AppBanco {
         ArrayList<Agencia> agencias = new ArrayList<>();
         ArrayList<Cliente> clientes = new ArrayList<>();
         ArrayList<Conta> contas = new ArrayList<>();
+        ArrayList<Banco> bancos = new ArrayList<>();
 
         int opcao;
 
@@ -28,7 +29,7 @@ public class AppBanco {
             switch (opcao) {
                 case 1:
                     System.out.print("Número da agência: ");
-                    String numAg = scanner.nextLine();
+                    int numAg = scanner.nextInt();
                     System.out.print("Endereço da agência: ");
                     String endAg = scanner.nextLine();
                     agencias.add(new Agencia(numAg, endAg));
@@ -43,10 +44,14 @@ public class AppBanco {
 
                     System.out.print("Nome do cliente: ");
                     String nome = scanner.nextLine();
+                    System.out.print("RG do cliente: ");
+                    String rg = scanner.nextLine();
                     System.out.print("CPF do cliente: ");
                     String cpf = scanner.nextLine();
+                    System.out.print("Telefone do cliente: ");
+                    String telefone = scanner.nextLine();
 
-                    Cliente cliente = new Cliente(nome, cpf);
+                    Cliente cliente = new Cliente(rg, nome, cpf, telefone);
                     clientes.add(cliente);
 
                     System.out.print("Número da conta: ");
@@ -59,7 +64,7 @@ public class AppBanco {
 
                     System.out.println("Agências disponíveis:");
                     for (int i = 0; i < agencias.size(); i++) {
-                        System.out.println((i+1) + ". " + agencias.get(i).getNumero());
+                        System.out.println((i+1) + ". " + agencias.get(i).getNumeroAgencia());
                     }
                     System.out.print("Escolha o número da agência para vincular a conta: ");
                     int indiceAgencia = scanner.nextInt() - 1;
@@ -79,21 +84,21 @@ public class AppBanco {
                 case 3:
                     System.out.println("\n=== Agências ===");
                     for (Agencia ag : agencias) {
-                        System.out.println("Número: " + ag.getNumero() + ", Endereço: " + ag.getEndereco());
+                        System.out.println("Número: " + ag.getNumeroAgencia() + ", Endereço: " + ag.getEndereco());
                     }
 
                     System.out.println("\n=== Clientes e Contas ===");
                     for (Conta c : contas) {
                         System.out.println("Cliente: " + c.getCliente().getNome() + " (CPF: " + c.getCliente().getCpf() + ")");
                         System.out.println("Conta: " + c.getNumero() + ", Saldo: " + c.getSaldo() + ", Limite: " + c.getLimite());
-                        System.out.println("Agência: " + c.getAgencia().getNumero());
+                        System.out.println("Agência: " + c.getAgencia().getNumeroAgencia());
                         System.out.println("-------------------------");
                     }
                     break;
 
                 case 4: // Depositar
                     System.out.print("Digite o número da agência: ");
-                    String agDeposito = scanner.nextLine();
+                    int agDeposito = scanner.nextInt();
                     System.out.print("Digite o CPF do cliente: ");
                     String cpfDeposito = scanner.nextLine();
 
@@ -110,7 +115,7 @@ public class AppBanco {
 
                 case 5: // Sacar
                     System.out.print("Digite o número da agência: ");
-                    String agSaque = scanner.nextLine();
+                    int agSaque = scanner.nextInt();
                     System.out.print("Digite o CPF do cliente: ");
                     String cpfSaque = scanner.nextLine();
 
@@ -138,9 +143,9 @@ public class AppBanco {
         scanner.close();
     }
 
-    public static Conta buscarConta(ArrayList<Conta> contas, String agenciaNumero, String cpf) {
+    public static Conta buscarConta(ArrayList<Conta> contas, int agenciaNumero, String cpf) {
         for (Conta c : contas) {
-            if (c.getAgencia().getNumero().equals(agenciaNumero) && c.getCliente().getCpf().equals(cpf)) {
+            if (c.getAgencia().getNumeroAgencia() == agenciaNumero && c.getCliente().getCpf().equals(cpf)) {
                 return c;
             }
         }

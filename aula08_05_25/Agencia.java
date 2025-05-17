@@ -1,19 +1,19 @@
 package aula08_05_25;
 
 public class Agencia {
-    private String numero;
+    private int numero;
     private String endereco;
 
-    public Agencia(String numero, String endereco) {
+    public Agencia(int numero, String endereco) {
         this.numero = numero;
         this.endereco = endereco;
     }
 
-    public void setNumero(String numero) {
+    public void setNumeroAgencia(int numero) {
         this.numero = numero;
     }
 
-    public String getNumero() {
+    public int getNumeroAgencia() {
         return numero;
     }
 

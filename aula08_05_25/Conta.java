@@ -6,12 +6,15 @@ public class Conta {
     private double limite;
     private Agencia agencia;  // agora Conta conhece a Agência
     private Cliente cliente;  // agora Conta conhece o Cliente
+    
 
     public Conta(int numero, double saldo, double limite) {
         this.numero = numero;
         this.saldo = saldo;
         this.limite = limite;
     }
+
+    
 
     // Getter e Setter para Agencia
     public void setAgencia(Agencia agencia) {
@@ -76,5 +79,8 @@ public class Conta {
             saldo -= valor;
             System.out.println("Saque realizado com sucesso.");
         }
+    
     }
+
+
 }
