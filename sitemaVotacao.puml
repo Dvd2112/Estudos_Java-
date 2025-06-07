@@ -1,0 +1,66 @@
+@startuml
+
+class Pessoa {
+  - nome : String
+  - cpf : String
+}
+
+class Eleitor {
+  - idEleitor : int
+  - senha : String
+  - statusVotacao : boolean
+}
+
+class Candidato {
+  - idCandidato : int
+  - partido : String
+  - numero : int
+
+}
+
+Pessoa <|-- Eleitor
+Pessoa <|-- Candidato
+
+class Voto {
+  - idVoto : int
+  - dataHora : DateTime
+  + registrar() : void
+}
+
+class Eleicao {
+  - idEleicao : int
+  - titulo : String
+  - dataInicio : DateTime
+  - dataFim : DateTime
+  - status : String
+  + iniciar() : void
+  + encerrar() : void
+}
+
+class Apurador {
+  - idApurador : int
+  + contarVotos() : void
+  + gerarRelatorio() : Relatorio
+}
+
+class Relatorio {
+  - idRelatorio : int
+  - dataGeracao : DateTime
+  + exibirResultados() : void
+}
+
+Eleicao *-- Voto : contém
+
+Eleicao o-- Candidato : candidatos
+
+Eleitor ..> Voto : vota
+
+Voto ..> Candidato : escolhido
+
+Voto ..> Eleicao : pertence
+
+Apurador ..> Relatorio : gera
+
+Relatorio ..> Eleicao : refere-se
+
+@enduml
