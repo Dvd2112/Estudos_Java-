@@ -6,4 +6,9 @@ public class Especial extends Corrente {
     public Especial(double limite){
         this.limiteCredito = limite;
     }
+
+    public void setLimite(double limite){
+        this.limiteCredito = limite;
+    }
+    
 }
